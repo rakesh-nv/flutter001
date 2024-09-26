@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class forgotpsw extends StatefulWidget {
-  const forgotpsw({super.key});
+class Forgotpsw extends StatefulWidget {
+  const Forgotpsw({super.key});
 
   @override
-  State<forgotpsw> createState() => _forgotpswState();
+  State<Forgotpsw> createState() => _ForgotpswState();
 }
 
-class _forgotpswState extends State<forgotpsw> {
+class _ForgotpswState extends State<Forgotpsw> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

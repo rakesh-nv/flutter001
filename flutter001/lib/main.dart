@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter001/IntroPage.dart';
-import 'package:flutter001/demo.dart';
-import 'package:flutter001/forgotpsw.dart';
+import 'package:flutter001/Forgotpsw.dart';
+import 'package:flutter001/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       //home: forgotpsw(),
       home: const MyHomePage(title: 'flutter demo'),
+      //home: home(),
     );
   }
 }
@@ -87,9 +88,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 vallidateForm();
               },
               decoration: InputDecoration(
-                  hintText: 'Email',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4))),
+                hintText: 'Enter the email',
+                prefixIcon: Icon(Icons.email),
+
+                // hintText: 'Email',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
             ),
             const SizedBox(height: 10),
 
@@ -100,20 +106,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 vallidateForm();
               },
               decoration: InputDecoration(
-                  hintText: 'Password',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4))),
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.remove_red_eye),
+                ),
+                hintText: 'Password',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
             ),
             //const SizedBox(height: 20),
 
             // Forgot Password
             TextButton(
               onPressed: () {
-                print('forgot password');
+                debugPrint('forgot password');
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const forgotpsw(),
+                      builder: (context) => const Forgotpsw(),
                     ));
               },
               child: const Text('Forgot Password',
@@ -158,10 +170,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? () {
                           debugPrint(emailController.text);
                           debugPrint(passwordController.text);
-                             Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const demo(),
+                                builder: (context) => home(),
                               ));
                         }
                       : () {},
