@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               decoration: InputDecoration(
                 hintText: 'Enter the email',
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: const Icon(Icons.email),
 
                 // hintText: 'Email',
                 border: OutlineInputBorder(
@@ -173,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => home(),
+                                builder: (context) => const home(),
                               ));
                         }
                       : () {},

@@ -1,17 +1,17 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class home extends StatelessWidget {
+  const home({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flipkart'),
+        leading: const Icon(Icons.home),
+        title: const Text('Home'),
         actions: [
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () {},
           ),
         ],
@@ -21,11 +21,11 @@ class home extends StatelessWidget {
         children: [
           // Search bar
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search for products, brands and more',
-                prefixIcon: Icon(Icons.search),
+                hintText: 'Search for products',
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -40,12 +40,16 @@ class home extends StatelessWidget {
               height: 100,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [
+                children: const [
                   CategoryTile(icon: Icons.phone_android, label: 'Mobiles'),
                   CategoryTile(icon: Icons.tv, label: 'Electronics'),
                   CategoryTile(icon: Icons.shopping_bag, label: 'Fashion'),
                   CategoryTile(icon: Icons.chair, label: 'Furniture'),
-                  CategoryTile(icon: Icons.laptop_chromebook, label: 'Chromebook')
+                  CategoryTile(
+                      icon: Icons.laptop_chromebook, label: 'Chromebook'),
+                  CategoryTile(icon: Icons.book, label: 'Book'),
+                  CategoryTile(icon: Icons.mouse, label: 'Mouse'),
+                  CategoryTile(icon: Icons.keyboard, label: 'Keyboard'),
                 ],
               ),
             ),
@@ -53,25 +57,58 @@ class home extends StatelessWidget {
 
           // Product list
           Expanded(
-            child: GridView.builder(
-              padding: EdgeInsets.all(8),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.7,
+            child: ListView.builder(
+              itemBuilder: (context, index) => SizedBox(
+                height: 210,
+                //color: Colors.red,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => const Box(),
+                ),
               ),
-              itemCount: 8, // Number of products
-              itemBuilder: (context, index) {
-                return ProductCard(
-                  imageUrl: 'https://via.placeholder.com/150', // Placeholder image
-                  productName: 'Product $index',
-                  price: '\$${(index + 1) * 20}',
-                );
-              },
             ),
+
+            // #################################################################3
+            // child: GridView.builder(
+            //   padding: EdgeInsets.all(8),
+            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //     crossAxisCount: 2,
+            //     crossAxisSpacing: 10,
+            //     mainAxisSpacing: 10,
+            //     childAspectRatio: 0.7,
+            //   ),
+            //   itemCount: 8, // Number of products
+            //   itemBuilder: (context, index) {
+            //     return ProductCard(
+            //       imageUrl: 'https://via.placeholder.com/150',
+            //       // Placeholder image
+            //       productName: 'Product $index',
+            //       price: '\$${(index + 1) * 20}',
+            //     );
+            //   },
+            // ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class Box extends StatelessWidget {
+  const Box({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      height: 200,
+      width: 200,
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        color: Colors.grey,
+        // decoration: BoxDecoration(
+        //   borderRadius: BorderRadius.circular(2)
+        // ),
       ),
     );
   }
@@ -81,7 +118,7 @@ class CategoryTile extends StatelessWidget {
   final IconData icon;
   final String label;
 
-  CategoryTile({required this.icon, required this.label});
+  const CategoryTile({super.key, required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -93,8 +130,8 @@ class CategoryTile extends StatelessWidget {
             radius: 30,
             child: Icon(icon, size: 30),
           ),
-          SizedBox(height: 8),
-          Text(label, style: TextStyle(fontSize: 14)),
+          const SizedBox(height: 8),
+          Text(label, style: const TextStyle(fontSize: 14)),
         ],
       ),
     );
@@ -106,7 +143,11 @@ class ProductCard extends StatelessWidget {
   final String productName;
   final String price;
 
-  ProductCard({required this.imageUrl, required this.productName, required this.price});
+  const ProductCard(
+      {super.key,
+      required this.imageUrl,
+      required this.productName,
+      required this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -121,9 +162,10 @@ class ProductCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(productName, style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 4),
-                Text(price, style: TextStyle(color: Colors.green)),
+                Text(productName,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 4),
+                Text(price, style: const TextStyle(color: Colors.green)),
               ],
             ),
           ),
