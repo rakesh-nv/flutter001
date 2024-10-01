@@ -57,36 +57,36 @@ class home extends StatelessWidget {
 
           // Product list
           Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) => SizedBox(
-                height: 210,
-                //color: Colors.red,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => const Box(),
-                ),
-              ),
-            ),
+            // child: ListView.builder(
+            //   itemBuilder: (context, index) => SizedBox(
+            //     height: 210,
+            //     //color: Colors.red,
+            //     child: ListView.builder(
+            //       scrollDirection: Axis.horizontal,
+            //       itemBuilder: (context, index) => const Box(),
+            //     ),
+            //   ),
+            // ),
 
             // #################################################################3
-            // child: GridView.builder(
-            //   padding: EdgeInsets.all(8),
-            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //     crossAxisCount: 2,
-            //     crossAxisSpacing: 10,
-            //     mainAxisSpacing: 10,
-            //     childAspectRatio: 0.7,
-            //   ),
-            //   itemCount: 8, // Number of products
-            //   itemBuilder: (context, index) {
-            //     return ProductCard(
-            //       imageUrl: 'https://via.placeholder.com/150',
-            //       // Placeholder image
-            //       productName: 'Product $index',
-            //       price: '\$${(index + 1) * 20}',
-            //     );
-            //   },
-            // ),
+            child: GridView.builder(
+              padding: EdgeInsets.all(8),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 0.7,
+              ),
+              itemCount: 8, // Number of products
+              itemBuilder: (context, index) {
+                return ProductCard(
+                  imageUrl: 'https://via.placeholder.com/150',
+                  // Placeholder image
+                  productName: 'Product $index',
+                  price: '\$${(index + 1) * 20}',
+                );
+              },
+            ),
           ),
         ],
       ),

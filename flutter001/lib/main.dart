@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter001/IntroPage.dart';
 import 'package:flutter001/Forgotpsw.dart';
 import 'package:flutter001/home.dart';
+import 'package:flutter001/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +22,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: forgotpsw(),
-      home: const MyHomePage(title: 'flutter demo'),
+      //home: const MyHomePage(title: 'flutter demo'),
       //home: home(),
+      home: SplashScreen(),
     );
   }
 }
